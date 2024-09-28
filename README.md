@@ -2,7 +2,7 @@
 - Murilo Varoto Alves
 - João Gabriel Renzetti
 --------------------------------
--Material de estudo
+- Material de estudo
 * https://docs.nestjs.com/
 * https://www.youtube.com/watch?v=4oLUddZVL80&list=PLdAEGQHOerPAMLdJim5Peryj6_2Q-477Z
 * https://scryfall.com/docs/api

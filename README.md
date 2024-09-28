@@ -1,6 +1,6 @@
-- Rodrigo Yaedu Pinesso RA- 22014201-2
-- Murilo Varoto Alves
-- João Gabriel Renzetti
+- Rodrigo Yaedu Pinesso RA: 22014201-2
+- Murilo Varoto Alves RA: 22215190-2
+- João Gabriel Renzetti RA: 22108621-2
 --------------------------------
 - Material de estudo
 * https://docs.nestjs.com/

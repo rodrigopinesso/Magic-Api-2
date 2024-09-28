@@ -4,6 +4,7 @@
     list-style: none;
     text-decoration: none;
     box-sizing: content-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -38,14 +39,39 @@ body {
 }
 
 .section_Gerador  {
-    margin-top: 20px;
-    padding-top: 30px;
-    text-align: center;
-    width: 500px;
-    height: 200px;
-    margin: 0 auto;
-    justify-content: center;
+  width: 800px;
+  margin: 0 auto;
+  justify-content: space-between;
+  display: flex;
+
 }
+
+.container {
+  background-color: rgb(114, 114, 131);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 90px;
+  
+}
+
+.container input {
+  width: 250px;
+  height: 25px;
+}
+
+.gerarInput {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
 
 
 /* From Uiverse.io by alexroumi */ 
@@ -63,6 +89,7 @@ body {
     box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     transition: all 0.3s;
     overflow: hidden;
+    cursor: pointer;
    }
    
    #gerarDeck::before {

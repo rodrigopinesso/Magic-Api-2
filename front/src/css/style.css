@@ -1,0 +1,193 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: content-box;
+}
+
+header {
+    text-align: center;
+    padding: 15px;
+
+    background-color: rgb(0, 0, 0);
+}
+header h1 {
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+
+    color: white;
+    
+}
+
+body {
+    background-image: url(/front/img/1000_F_753550870_1WPqH5p5D4jgbNd4JUMsuKvyUIH1EHEa.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.space{
+    padding: 30px;
+}
+
+.section_Gerador  {
+    margin-top: 20px;
+    padding-top: 30px;
+    text-align: center;
+    width: 500px;
+    height: 200px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+
+/* From Uiverse.io by alexroumi */ 
+#gerarDeck {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 0.3s;
+    overflow: hidden;
+   }
+   
+   #gerarDeck::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+   }
+   
+   #gerarDeck:hover {
+    color: #e8e8e8;
+   }
+   
+   #gerarDeck:hover::before {
+    width: 100%;
+   }
+
+
+   #section_gerar_comander_cards {
+    display: flex;
+    justify-content: center;
+    }
+
+   #card-comander {
+    background-color: rgb(220, 188, 188);
+    width: 250px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+
+    padding: 10px;
+   }
+
+   #section_gerar_cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+   }
+
+   #card-geral {
+    width: 230px;
+    background-color: red;
+    text-align: center;
+    border-radius: 7px;
+   }
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* From Uiverse.io by vinodjangid07 */ 
+.Btn {
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgb(214, 214, 214);
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+  }
+  
+  .svgIcon {
+    fill: rgb(70, 70, 70);
+  }
+  
+  .icon2 {
+    width: 18px;
+    height: 5px;
+    border-bottom: 2px solid rgb(70, 70, 70);
+    border-left: 2px solid rgb(70, 70, 70);
+    border-right: 2px solid rgb(70, 70, 70);
+  }
+  
+  .Btn:hover {
+    background-color: rgb(51, 51, 51);
+    transition-duration: 0.3s;
+  }
+  
+  .Btn:hover .icon2 {
+    border-bottom: 2px solid rgb(235, 235, 235);
+    border-left: 2px solid rgb(235, 235, 235);
+    border-right: 2px solid rgb(235, 235, 235);
+  }
+  
+  .Btn:hover .svgIcon {
+    fill: rgb(255, 255, 255);
+    animation: slide-in-top 1s linear infinite;
+  }
+  
+  @keyframes slide-in-top {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  

@@ -5,6 +5,8 @@
 -Material de estudo
 * https://docs.nestjs.com/
 * https://www.youtube.com/watch?v=4oLUddZVL80&list=PLdAEGQHOerPAMLdJim5Peryj6_2Q-477Z
+* https://scryfall.com/docs/api
+-------------------------------------------
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>

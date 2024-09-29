@@ -5,15 +5,6 @@ const app_module_1 = require("./app.module");
 const os_1 = require("os");
 const cluster = require('cluster');
 async function bootstrap() {
-<<<<<<< HEAD
-    const app = await core_1.NestFactory.create(app_module_1.AppModule);
-    app.enableCors({
-        origin: ['http://127.0.0.1:5500', 'http://localhost:5500'],
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-        credentials: true,
-    });
-    await app.listen(3000);
-=======
     const isPrimary = cluster.isPrimary || cluster.isMaster;
     if (isPrimary) {
         const numCPUs = (0, os_1.cpus)().length;
@@ -28,9 +19,14 @@ async function bootstrap() {
     }
     else {
         const app = await core_1.NestFactory.create(app_module_1.AppModule);
+        app.enableCors({
+            origin: ['http://127.0.0.1:5500', 'http://localhost:5500'],
+            methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+            credentials: true,
+        });
         await app.listen(3000);
+        console.log(`Worker process started on port 3000. PID: ${process.pid}`);
     }
->>>>>>> 25ce378073dd4a793fda957104c68383301a7dc2
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

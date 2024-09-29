@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <main>
+    <header>
+        <h1>Magic The Gathering </h1>
+    </header>
+
     <h2>Gerar Novo Deck</h2>
     <form id="createDeckForm">
         <label for="commanderName">Nome do Comandante:</label>
@@ -16,13 +21,31 @@
         <button type="submit">Criar Deck</button>
     </form>
 
+    <section class="container-cards">
+        <h2 class="nameComander"></h2>
+        <p class="color"></p>
+        <div class="img-card">
+            <img src="" alt="" class="imgcard">
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
     <script>
         document.getElementById('createDeckForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            // Aqui você pode adicionar lógica para criar o deck
             alert('Deck criado com sucesso!');
         });
     </script>
-    
 </body>
 </html>

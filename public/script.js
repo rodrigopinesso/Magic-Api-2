@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const API_URL = 'http://localhost:3000';
-    const SCRYFALL_API = ''; //https://api.scryfall.com/cards/named?fuzzy=
+    const SCRYFALL_API = 'https://api.scryfall.com/cards/named?fuzzy=';
     
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
@@ -71,6 +71,7 @@ const signupForm = document.getElementById('signupForm');
 
 
 
+
     const loadDecksButton = document.getElementById('loadDecksButton');
     const deckList = document.getElementById('deck-list');
     
@@ -87,7 +88,7 @@ const signupForm = document.getElementById('signupForm');
                 return;
             }
 
-            const response = await fetch(`${API_URL}/deck/myDecks`, {
+            const response = await fetch(`${API_URL}/deck/myDeck`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -97,70 +98,6 @@ const signupForm = document.getElementById('signupForm');
             if (!response.ok) {
                 throw new Error('Erro ao buscar decks: ' + response.statusText);
             }
-
-            const decks = await response.json();
-            console.log('Decks recebidos:', decks);
-
-            deckList.innerHTML = ''; 
-
-            decks.forEach((deck) => {
-                const li = document.createElement('li');
-                const name = deck.name || 'Sem nome';
-                const description = deck.description || 'Sem descrição';
-                const commanderName = deck.commanderName || 'Sem comandante';
-                const colors = deck.colors?.join(', ') || 'Sem cores';
-                const cards = deck.cards || [];
-
-                li.textContent = `${name} - Comandante: ${commanderName} - Cores: ${colors}`;
-
-                                if (commanderName.toLowerCase() === 'umbris, fear manifest') {
-                    fetchCommanderImage(commanderName); 
-                    
-                }
-
-                const cardContainer = document.createElement('div');
-                cardContainer.className = 'card-container'; 
-                li.appendChild(cardContainer); 
-
-                cards.forEach(async (card) => {
-                    const cardItem = document.createElement('div'); 
-                    cardItem.className = 'card-item'; 
-
-                    try {
-                        const cardResponse = await fetch(`${SCRYFALL_API}${encodeURIComponent(card)}`);
-                        if (!cardResponse.ok) {
-                            throw new Error('Erro ao buscar a carta: ' + cardResponse.statusText);
-                        }
-
-                        const cardData = await cardResponse.json();
-                        const cardImage = cardData.image_uris?.normal || 'https://via.placeholder.com/150'; 
-
-                        const img = document.createElement('img');
-                        img.src = cardImage; 
-                        img.alt = card; 
-                        img.className = 'card-image'; 
-
-                        const cardName = document.createElement('p');
-                        cardName.textContent = card; 
-
-                        cardItem.appendChild(img); 
-                        cardItem.appendChild(cardName); 
-                    } catch (error) {
-                        console.error('Erro ao buscar a imagem da carta:', error);
-                        cardItem.textContent = card + ' - Imagem não encontrada'; 
-                    }
-
-                    cardContainer.appendChild(cardItem); 
-                });
-
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Excluir';
-                deleteButton.addEventListener('click', () => deleteDeck(deck._id)); 
-                li.appendChild(deleteButton); 
-
-                deckList.appendChild(li); 
-            });
-
         } catch (error) {
             console.error('Error fetching decks:', error);
         }

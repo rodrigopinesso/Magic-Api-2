@@ -21,7 +21,7 @@ exports.DeckModule = DeckModule = __decorate([
     (0, common_1.Module)({
         imports: [
             cache_manager_1.CacheModule.register({
-                ttl: 3600,
+                ttl: 10,
                 max: 100,
             }),
             auth_module_1.AuthModule,

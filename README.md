@@ -1,12 +1,17 @@
-- Rodrigo Yaedu Pinesso RA- 22014201-2
-- Murilo Varoto Alves
-- João Gabriel Renzetti
+- Rodrigo Yaedu Pinesso RA: 22014201-2
+- Murilo Varoto Alves RA: 22215190-2
+- João Gabriel Renzetti RA: 22108621-2
+- Nathan Sena RA: 22019973-2
 --------------------------------
 - Material de estudo
 * https://docs.nestjs.com/
 * https://www.youtube.com/watch?v=4oLUddZVL80&list=PLdAEGQHOerPAMLdJim5Peryj6_2Q-477Z
 * https://scryfall.com/docs/api
 -------------------------------------------
+* criar o arquivo .env
+
+--------------------------------------------
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>

@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login/Signup</title>
-    <link rel="stylesheet" href="./style2.css">
+    <title>Login</title>
+   <!--  <link rel="stylesheet" href="./style2.css"> -->
+     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <h2>Login</h2>
+    
+<!--     <h2>Login</h2>
     <form id="loginForm">
         <input type="email" id="loginEmail" placeholder="Email" required>
         <input type="password" id="loginPassword" placeholder="Password" required>
@@ -22,6 +24,49 @@
         <button type="submit">Signup</button>
         
     </form>
+
+ -->
+
+    <div class="wrapper">
+            <div class="card-switch">
+                <label class="switch">
+                   <input type="checkbox" class="toggle">
+                   <span class="slider"></span>
+                   <span class="card-side"></span>
+                   <div class="flip-card__inner">
+                      
+                    <div class="flip-card__front">
+                         <div class="title">Log in</div>
+
+                         <form class="flip-card__form" id="loginForm"> 
+                            <input class="flip-card__input" id="loginEmail" placeholder="Email" type="email">
+                            <input class="flip-card__input" id="loginPassword" placeholder="Password" type="password">
+                            <button class="flip-card__btn" type="submit">Entrar</button>
+                         </form>
+
+
+                    </div>
+
+
+                      <div class="flip-card__back" id="signupForm">
+                         
+                        <div class="title">Sign up</div>
+
+                        
+                        <form class="flip-card__form" id="signupForm" action="">
+                            <input class="flip-card__input" placeholder="Name" type="name" id="signupName" >
+                            <input class="flip-card__input" name="email" placeholder="Email" type="email" id="signupEmail">
+                            <input class="flip-card__input"name="password" placeholder="Password" type="password" id="signupPassword" >
+                            <button class="flip-card__btn" type="submit">Cadastrar!</button>
+                         </form>
+                      </div>
+                      
+                   </div>
+                </label>
+            </div>   
+       </div>
+
+
 
     <script src="script.js"></script>
 </body>

@@ -10,6 +10,10 @@
 -------------------------------------------
 * criar o arquivo .env
 
+docker-compose up --build
+
+- testar npm rum start:dev magic-api
+         npm rum start:ev  romq-process
 --------------------------------------------
 
 <p align="center">

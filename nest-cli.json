@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/magic-api/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/magic-api/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/magic-api",
+  "projects": {
+    "magic-api": {
+      "type": "application",
+      "root": "apps/magic-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/magic-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/magic-api/tsconfig.app.json"
+      }
+    },
+    "romq-process": {
+      "type": "application",
+      "root": "apps/romq-process",
+      "entryFile": "main",
+      "sourceRoot": "apps/romq-process/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/romq-process/tsconfig.app.json"
+      }
+    }
   }
 }

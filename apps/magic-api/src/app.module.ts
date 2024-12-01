@@ -5,6 +5,8 @@ import { DeckModule } from './deck/deck.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
+import { RabbitmqModule } from './..//rabbitmq/rabbitmq.module'; 
+
 
 @Module({
   imports: [
@@ -14,7 +16,8 @@ import { AuthModule } from './auth/auth.module';
     }),
     MongooseModule.forRoot(process.env.DB_URI),
     DeckModule,
-    AuthModule
+    AuthModule,
+    RabbitmqModule,
   ],
   controllers: [AppController],
   providers: [AppService],

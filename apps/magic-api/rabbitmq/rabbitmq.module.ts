@@ -10,7 +10,7 @@ imports: [
         transport: Transport.RMQ,
         options: {
           urls: ['amqp://guest:guest@rabbitmq:5672'],
-        //   noAck: false,
+        //   noAck: false, 
           queueOptions: {
             durable: false
           },

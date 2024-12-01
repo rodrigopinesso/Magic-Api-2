@@ -27,7 +27,7 @@ async function bootstrap() {
       credentials: true,
     });
 
-    await app.listen(3000);
+    await app.listen(3000);//estava listn(3000)
     console.log(`Worker process started on port 3000. PID: ${process.pid}`);
   }
 }

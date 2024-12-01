@@ -52,4 +52,21 @@ export class AuthService {
     return { token }
 
   }
+
+  async findAll(): Promise<User[]> {
+    const users = await this.userModel.find();
+    return users;
+ }
+
+ async updateById(id: string, user: User): Promise<User> {
+    return await this.userModel.findByIdAndUpdate(id, user, {
+       new: true,
+       runValidators: true,
+    });
+ }
+
+ async deleteById(id: string): Promise<User> {
+    return await this.userModel.findByIdAndDelete(id);
+ }
+
 }

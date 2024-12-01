@@ -7,6 +7,7 @@
 * https://www.youtube.com/watch?v=4oLUddZVL80&list=PLdAEGQHOerPAMLdJim5Peryj6_2Q-477Z
 * https://scryfall.com/docs/api
 * https://www.youtube.com/watch?v=yMu_Jqff83c
+* https://docs.nestjs.com/microservices/rabbitmq
 -------------------------------------------
 * criar o arquivo .env
 

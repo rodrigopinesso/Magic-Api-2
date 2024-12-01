@@ -1,4 +1,4 @@
-* Prova Desafio Profissional 2 Bimestre
+Prova Desafio Profissional 2 Bimestre
 --------------------------------------
 - Rodrigo Yaedu Pinesso RA: 22014201-2
 - Murilo Varoto Alves RA: 22215190-2

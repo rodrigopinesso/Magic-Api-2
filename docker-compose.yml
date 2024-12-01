@@ -7,9 +7,11 @@ services:
       - "3000:3000"
     depends_on:
       - rabbitmq
+      - mongodb
     environment:
       RABBITMQ_HOST: rabbitmq
       RABBITMQ_PORT: 5672
+      DB_URI: mongodb://mongodb:27017/api-magic-1
     volumes:
       - .:/app
       - /app/node_modules
@@ -23,3 +25,22 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'db.runCommand({ping: 1})' | mongo --quiet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongodb_data:

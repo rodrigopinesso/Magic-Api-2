@@ -18,26 +18,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RomqProcessController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const romq_process_service_1 = __webpack_require__(/*! ./romq-process.service */ "./apps/romq-process/src/romq-process.service.ts");
+const microservices_1 = __webpack_require__(/*! @nestjs/microservices */ "@nestjs/microservices");
 let RomqProcessController = class RomqProcessController {
     constructor(romqProcessService) {
         this.romqProcessService = romqProcessService;
     }
-    getHello() {
-        return this.romqProcessService.getHello();
+    async defaultNestJs(data, context) {
+        return this.romqProcessService.defaultNestJs(data, context);
     }
 };
 exports.RomqProcessController = RomqProcessController;
 __decorate([
-    (0, common_1.Get)(),
+    (0, microservices_1.MessagePattern)('default-nest-rmq'),
+    __param(0, (0, microservices_1.Payload)()),
+    __param(1, (0, microservices_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], RomqProcessController.prototype, "getHello", null);
+    __metadata("design:paramtypes", [Object, typeof (_b = typeof microservices_1.RmqContext !== "undefined" && microservices_1.RmqContext) === "function" ? _b : Object]),
+    __metadata("design:returntype", Promise)
+], RomqProcessController.prototype, "defaultNestJs", null);
 exports.RomqProcessController = RomqProcessController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [typeof (_a = typeof romq_process_service_1.RomqProcessService !== "undefined" && romq_process_service_1.RomqProcessService) === "function" ? _a : Object])
@@ -95,8 +101,11 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RomqProcessService = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 let RomqProcessService = class RomqProcessService {
-    getHello() {
-        return 'Hello World!';
+    async defaultNestJs(data, context) {
+        console.log(data);
+        const channel = context.getChannelRef();
+        const originalMsg = context.getMessage();
+        channel.ack(originalMsg);
     }
 };
 exports.RomqProcessService = RomqProcessService;
@@ -124,6 +133,16 @@ module.exports = require("@nestjs/common");
 /***/ ((module) => {
 
 module.exports = require("@nestjs/core");
+
+/***/ }),
+
+/***/ "@nestjs/microservices":
+/*!****************************************!*\
+  !*** external "@nestjs/microservices" ***!
+  \****************************************/
+/***/ ((module) => {
+
+module.exports = require("@nestjs/microservices");
 
 /***/ })
 
@@ -165,9 +184,19 @@ var exports = __webpack_exports__;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 const romq_process_module_1 = __webpack_require__(/*! ./romq-process.module */ "./apps/romq-process/src/romq-process.module.ts");
+const microservices_1 = __webpack_require__(/*! @nestjs/microservices */ "@nestjs/microservices");
 async function bootstrap() {
-    const app = await core_1.NestFactory.create(romq_process_module_1.RomqProcessModule);
-    await app.listen(3000);
+    const app = await core_1.NestFactory.createMicroservice(romq_process_module_1.RomqProcessModule, {
+        transport: microservices_1.Transport.RMQ,
+        options: {
+            urls: ['amqp://guest:guest@rabbitmq:5672'],
+            noAck: false,
+            queueOptions: {
+                durable: false
+            },
+        },
+    });
+    await app.listen();
 }
 bootstrap();
 

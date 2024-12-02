@@ -11,7 +11,7 @@ import { RabbitmqModule } from './../rabbitmq/rabbitmq.module';
   imports: [
     ConfigModule.forRoot({
       envFilePath: '.env',
-      isGlobal: true, // Torna as variáveis de ambiente disponíveis globalmente
+      isGlobal: true, 
     }),
     MongooseModule.forRoot(process.env.DB_URI), // Conexão com o MongoDB
     DeckModule,

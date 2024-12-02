@@ -5,7 +5,7 @@ Prova Desafio Profissional 2 Bimestre
 - João Gabriel Renzetti RA: 22108621-2
 - Nathan Sena da Rocha RA: 22019973-2
 --------------------------------
-- Material de estudo
+Material de estudo
 * https://docs.nestjs.com/
 * https://www.youtube.com/watch?v=4oLUddZVL80&list=PLdAEGQHOerPAMLdJim5Peryj6_2Q-477Z
 * https://scryfall.com/docs/api

@@ -6,11 +6,15 @@ export class AppService {
 
   constructor ( private readonly rabbitmqService: RabbitmqService){}
 
-  async defaultNestJs() { //getHello(): string
-    this.rabbitmqService.instance.emit('default-nest-rmq', {
-      message: 'Nova mensagem: RMQ '
-    });//envia informação para o rmq
-    // this.rabbitmqService.instance.send('', {}).pipe();//espera uma função ascy, recupera as info mandada para o rabit (passar delei)
-    // return 'Hello World!';
-  }
+ async defaultNestJs() {
+  // Emit a default message to RabbitMQ
+  this.rabbitmqService.instance.emit('default-nest-rmq', {
+    message: 'Nova mensagem: RMQ '
+  });
+
+  // Uncomment the following line to enable asynchronous RabbitMQ response handling
+  // this.rabbitmqService.instance.send('', {}).pipe();
+
+  // Return statement (currently disabled)
+  // return 'Hello World!';
 }

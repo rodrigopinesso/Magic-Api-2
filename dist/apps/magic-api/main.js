@@ -152,7 +152,7 @@ const deck_module_1 = __webpack_require__(/*! ./deck/deck.module */ "./apps/magi
 const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
 const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
 const auth_module_1 = __webpack_require__(/*! ./auth/auth.module */ "./apps/magic-api/src/auth/auth.module.ts");
-const rabbitmq_module_1 = __webpack_require__(/*! ./..//rabbitmq/rabbitmq.module */ "./apps/magic-api/rabbitmq/rabbitmq.module.ts");
+const rabbitmq_module_1 = __webpack_require__(/*! ./../rabbitmq/rabbitmq.module */ "./apps/magic-api/rabbitmq/rabbitmq.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -161,7 +161,7 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot({
                 envFilePath: '.env',
-                isGlobal: true
+                isGlobal: true,
             }),
             mongoose_1.MongooseModule.forRoot(process.env.DB_URI),
             deck_module_1.DeckModule,
@@ -235,13 +235,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuthController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./apps/magic-api/src/auth/auth.service.ts");
 const signup_dto_1 = __webpack_require__(/*! ./dto/signup.dto */ "./apps/magic-api/src/auth/dto/signup.dto.ts");
 const login_dto_1 = __webpack_require__(/*! ./dto/login.dto */ "./apps/magic-api/src/auth/dto/login.dto.ts");
+const user_schema_1 = __webpack_require__(/*! ./schemas/user.schema */ "./apps/magic-api/src/auth/schemas/user.schema.ts");
+const passport_1 = __webpack_require__(/*! @nestjs/passport */ "@nestjs/passport");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -251,6 +253,15 @@ let AuthController = class AuthController {
     }
     login(loginDto) {
         return this.authService.login(loginDto);
+    }
+    async getAllUsers() {
+        return this.authService.findAll();
+    }
+    async updateUser(id, user) {
+        return this.authService.updateById(id, user);
+    }
+    async deleteById(id) {
+        return this.authService.deleteById(id);
     }
 };
 exports.AuthController = AuthController;
@@ -268,6 +279,29 @@ __decorate([
     __metadata("design:paramtypes", [typeof (_d = typeof login_dto_1.LoginDto !== "undefined" && login_dto_1.LoginDto) === "function" ? _d : Object]),
     __metadata("design:returntype", typeof (_e = typeof Promise !== "undefined" && Promise) === "function" ? _e : Object)
 ], AuthController.prototype, "login", null);
+__decorate([
+    (0, common_1.Get)('/allUsers'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", typeof (_f = typeof Promise !== "undefined" && Promise) === "function" ? _f : Object)
+], AuthController.prototype, "getAllUsers", null);
+__decorate([
+    (0, common_1.Put)('/updateUser/:id'),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, typeof (_g = typeof user_schema_1.User !== "undefined" && user_schema_1.User) === "function" ? _g : Object]),
+    __metadata("design:returntype", typeof (_h = typeof Promise !== "undefined" && Promise) === "function" ? _h : Object)
+], AuthController.prototype, "updateUser", null);
+__decorate([
+    (0, common_1.Delete)('/deleteUser/:id'),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", typeof (_j = typeof Promise !== "undefined" && Promise) === "function" ? _j : Object)
+], AuthController.prototype, "deleteById", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" ? _a : Object])
@@ -386,6 +420,19 @@ let AuthService = class AuthService {
         }
         const token = this.jwtService.sign({ id: user._id, userId: user.id });
         return { token };
+    }
+    async findAll() {
+        const users = await this.userModel.find();
+        return users;
+    }
+    async updateById(id, user) {
+        return await this.userModel.findByIdAndUpdate(id, user, {
+            new: true,
+            runValidators: true,
+        });
+    }
+    async deleteById(id) {
+        return await this.userModel.findByIdAndDelete(id);
     }
 };
 exports.AuthService = AuthService;

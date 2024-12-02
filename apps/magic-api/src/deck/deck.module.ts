@@ -3,7 +3,6 @@ import { DeckController } from './deck.controller';
 import { DeckService } from './deck.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DeckSchema } from './schemas/deck.schema';
-// import { AuthModule } from 'src/auth/auth.module';
 import { CacheModule } from '@nestjs/cache-manager';
 import { AuthModule } from '../auth/auth.module';
 

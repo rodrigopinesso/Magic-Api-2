@@ -18,3 +18,4 @@ export class AppService {
   // Return statement (currently disabled)
   // return 'Hello World!';
 }
+}

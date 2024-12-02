@@ -1,4 +1,3 @@
-
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
@@ -6,9 +5,8 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('default-nest')
+  @Get('default-nest') // rota GET 
   async defaultNestJs() {
-    return this.appService.defaultNestJs();
+    return this.appService.defaultNestJs(); 
   }
-
 }
